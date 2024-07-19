@@ -1,0 +1,99 @@
+.display-font {
+    font-family: "Playfair Display", serif;
+    font-size: large;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: blue;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: aliceblue;
+    box-shadow: 5px blanchedalmond;
+}
+
+#display {
+    display: grid;
+    /* grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr; */
+}
+
+#display * {
+    font-family: "Playfair Display", serif;
+    font-size: large;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+#wicon {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-self: center;
+}
+
+#wname {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+#temp {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+#cname {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+#city {
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+}
+
+#submitBtn {
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    margin-top: 10px;
+}
