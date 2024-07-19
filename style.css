@@ -40,7 +40,10 @@ body {
 }
 
 #display {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* display: grid; */
     /* grid-template-columns: 2fr 1fr;
     grid-template-rows: 2fr 1fr; */
 }
@@ -51,6 +54,12 @@ body {
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
+}
+
+.temporary {
+    align-self: center;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 #wicon {

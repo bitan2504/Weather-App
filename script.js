@@ -1,6 +1,7 @@
 const display = document.getElementById('display');
 const wicon = document.getElementById('wicon');
 const temp = document.getElementById('temp');
+const tempo = document.getElementsByClassName('temporary')[0];
 const wname = document.getElementById('wname');
 const wdesc = document.getElementById('wdesc');
 const cname = document.getElementById('cname');
@@ -39,14 +40,16 @@ function getWeather() {
 }
 
 function displayWeather(data) {
+    display.style.display = 'grid';
     temp.innerHTML = `${Math.round(data.main.temp-273)}`+`&#8451`;
     wname.innerHTML = data.weather[0].main;
+    tempo.style.display = 'none';
     // wdesc.innerHTML = data.weather[0].description
     cname.innerHTML = data.name;
 
     const iconCode = data.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
     wicon.src = iconUrl;
-    // wicon.desc = data.weather[0].description;
+    wicon.desc = data.weather[0].description;
     wicon.style.display = 'block';
 }
