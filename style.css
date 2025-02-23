@@ -36,10 +36,24 @@ body {
     color: white;
 }
 
-.logo {
-    font-size: 24px;
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
+.logo-img {
+    width: 50px;  /* Set the desired width */
+    height: 50px;
+    border-radius: 10px; /* Set the desired height */
+    object-fit: contain; /* Ensures the image scales properly */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
 nav ul {
     list-style: none;
     margin: 0;
