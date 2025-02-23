@@ -10,7 +10,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
+<style>
+   .suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 80px auto; /* Centering vertically */
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* This centers it */
+    width: 250px; /* Adjust as needed */
+    background: #5691d0;
+    display: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+    text-align: center; /* Center text */
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
+</style>
 <body>
     <header>
         <div class="header-container">
@@ -28,7 +56,6 @@
             </nav>
         </div>
     </header>
-    
     <main>
         <div class="container">
             <div class="form">
@@ -40,10 +67,17 @@
                     <div id="cname" class="display-font"></div>
                     <div id="temp" class="display-font"></div>
                 </div>
-                <input type="text" title="city" name="city" id="city">
+    
+                <!-- Search Input -->
+                <input type="text" title="city" name="city" id="city" onkeyup="showSuggestions()">
+                
+                <!-- Suggestions Dropdown -->
+                <ul id="suggestions" class="suggestions-list"></ul>
+    
                 <input type="button" value="Submit" onclick="getWeather()" id="submitBtn">
             </div>
         </div>
+        
     </main>
     
     <footer>
