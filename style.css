@@ -208,58 +208,104 @@ ul li a {
 }
 
 /* Header Styles */
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
 header {
     background-color: #5691d0;
-    padding: 20px 0;
+    padding: 15px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 2px solid rgb(0, 184, 245);
-    border-radius: 5px;
+    width: 100%;
 }
 
-header .container {
+/* Header container with flexbox */
+.header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo on left, links on right */
     align-items: center;
-    padding: 0 15px; /* Add some padding for spacing */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex-wrap: wrap; /* Allows wrapping if necessary */
 }
 
-header .container img {
-    max-height: 60px;
+/* Logo styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevents logo from shrinking */
 }
 
-header .nav-links {
+.logo-img {
+    max-height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Navigation styles */
+nav {
+    flex-grow: 1; /* Makes nav take available space */
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Ensures links wrap instead of overflowing */
 }
 
-header .nav-links li {
-    list-style-type: none;
-    margin-left: 20px; /* Default spacing */
+nav ul li {
+    display: inline-block;
 }
 
-header .nav-links a {
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    /* padding: 10px 15px; */
+    display: block;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-header .nav-links a:hover {
-    color: #ffcb00;
+/* Hover effect */
+nav ul li a:hover {
+    background-color: #ffcb00;
+    color: #000;
+    border-radius: 5px;
 }
 
-/* Reduce header spacing on smaller screens */
-@media (max-width: 600px) {
-    header {
-        padding: 10px 0; /* Reduce top-bottom padding */
+/* ✅ Mobile Fix: Keep Background Behind "Contact Us" */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
     }
 
-    header .nav-links li {
-        margin-left: 10px; /* Reduce spacing between links */
+    nav {
+        width: 100%;
     }
 
-    header .container img {
-        max-height: 40px; /* Make the logo smaller */
+    nav ul {
+        justify-content: center; /* Centers nav items */
+        gap: 10px;
+    }
+
+    nav ul li a {
+        padding: 8px 12px;
     }
 }
