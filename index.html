@@ -8,25 +8,53 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="form">
-            <div id="display">
-                <img id="wicon" alt="null" style="display: none;"></img>
-                <div class="temporary">Enter your city name</div>
-                <div id="wname"></div>
-                <div id="wdesc" class=".display-font"></div>
-                <div id="cname" class=".display-font"></div>
-                <div id="temp" class=".display-font"></div>
-            </div>
-            <input type="text" title="city" name="city" id="city">
-            <input type="button" value="Submit" onclick="getWeather()" id="submitBtn">
+    <header>
+        <div class="header-container">
+            <h1 class="logo">Weather App</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                   
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="form">
+                <div id="display">
+                    <img id="wicon" alt="null" style="display: none;">
+                    <div class="temporary">Enter your city name</div>
+                    <div id="wname"></div>
+                    <div id="wdesc" class="display-font"></div>
+                    <div id="cname" class="display-font"></div>
+                    <div id="temp" class="display-font"></div>
+                </div>
+                <input type="text" title="city" name="city" id="city">
+                <input type="button" value="Submit" onclick="getWeather()" id="submitBtn">
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <ul>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#privacy-policy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms & Conditions</a></li>
+                <p>&copy; 2025 Weather App. All rights reserved.</p>
+            </ul>
+        </div>
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 
