@@ -11,14 +11,94 @@
     padding: 0px;
 }
 
-body {
+/* body {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100vh;
     width: 100vw;
     background-color: blue;
+} */
+
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(81, 81, 240);
 }
+/* Header Styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #5691d0;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 184, 245);
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 8px; /* Default spacing */
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Reduce footer spacing on smaller screens */
+@media (max-width: 600px) {
+    .footer-container ul li {
+        margin-bottom: 3px; /* Less gap on mobile */
+    }
+
+    footer {
+        padding: 5px; /* Reduce padding to save space */
+    }
+}
+
 
 .container {
     display: flex;
@@ -26,6 +106,12 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 100px;
+}
+@media (max-width: 600px) {
+    .container{
+        margin-top: 50px;
+    }
 }
 
 .form {
@@ -105,4 +191,61 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
     margin-top: 10px;
+}
+
+/* Header Styles */
+header {
+    background-color: #5691d0;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 184, 245);
+    border-radius: 5px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px; /* Add some padding for spacing */
+}
+
+header .container img {
+    max-height: 60px;
+}
+
+header .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header .nav-links li {
+    list-style-type: none;
+    margin-left: 20px; /* Default spacing */
+}
+
+header .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+    color: #ffcb00;
+}
+
+/* Reduce header spacing on smaller screens */
+@media (max-width: 600px) {
+    header {
+        padding: 10px 0; /* Reduce top-bottom padding */
+    }
+
+    header .nav-links li {
+        margin-left: 10px; /* Reduce spacing between links */
+    }
+
+    header .container img {
+        max-height: 40px; /* Make the logo smaller */
+    }
 }
