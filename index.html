@@ -11,32 +11,93 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <style>
-   .suggestions-list {
+/* Container for centering */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    flex-direction: column;
+}
+
+/* Form Styling */
+.form {
+    position: relative;
+    text-align: center;
+}
+
+/* Weather Display */
+#display {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+    display: none;
+}
+
+/* Search Input */
+#city {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+}
+
+/* Suggestions Dropdown */
+.suggestions-list {
     list-style: none;
     padding: 0;
-    margin: 80px auto; /* Centering vertically */
+    margin: 0; /* Remove margin to avoid unwanted spacing */
     border: 1px solid #ccc;
     max-height: 150px;
     overflow-y: auto;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%); /* This centers it */
-    width: 250px; /* Adjust as needed */
-    background: #5691d0;
+    width: 250px; /* Same width as input */
+    background: #ffffff;
     display: none;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures it appears above other elements */
+
+    /* Position it just below the search input */
+    top: calc(95% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+/* List Item Styling */
 .suggestions-list li {
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
-    text-align: center; /* Center text */
+    text-align: center;
+    font-size: 14px;
 }
 
+/* Hover Effect */
 .suggestions-list li:hover {
     background-color: #f0f0f0;
 }
+
+/* Submit Button */
+#submitBtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background-color: #0056b3;
+}
+
 
 </style>
 <body>
@@ -61,13 +122,13 @@
             <div class="form">
                 <div id="display">
                     <img id="wicon" alt="null" style="display: none;">
-                    <div class="temporary">Enter your city name</div>
+                   
                     <div id="wname"></div>
                     <div id="wdesc" class="display-font"></div>
                     <div id="cname" class="display-font"></div>
                     <div id="temp" class="display-font"></div>
                 </div>
-    
+                <div class="temporary">Enter your city name</div>
                 <!-- Search Input -->
                 <input type="text" title="city" name="city" id="city" onkeyup="showSuggestions()">
                 
@@ -77,7 +138,6 @@
                 <input type="button" value="Submit" onclick="getWeather()" id="submitBtn">
             </div>
         </div>
-        
     </main>
     
     <footer>
