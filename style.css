@@ -347,6 +347,21 @@ ul li a {
     }
 }
 
+@media screen and (max-width: 440px) {
+    .header-container{
+        padding: 0.5em;
+    }
+    .logo-img{
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-container h1{
+        font-size: 1.2em;
+    }
+}
+
 @media screen and (max-width: 375px) {
     .w-detail-box {
         width: 100%;
