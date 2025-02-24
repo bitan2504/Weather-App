@@ -42,16 +42,8 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
-
-/* body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: blue;
-} */
 
 body {
     font-family: 'Playfair Display', serif;
@@ -59,7 +51,70 @@ body {
     padding: 0;
     text-align: center;
     background-color: var(--bg-color);
+    background-color: #0b0b33;
 }
+
+/* Header Styles */
+header {
+    background-color: #0a4584;
+    padding: 5px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    /* Add some padding for spacing */
+}
+
+header .container img {
+    max-height: 60px;
+}
+
+header .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header .nav-links li {
+    list-style-type: none;
+    margin-left: 20px;
+    /* Default spacing */
+}
+
+header .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+    color: #ffcb00;
+}
+
+/* Reduce header spacing on smaller screens */
+@media (max-width: 600px) {
+    header {
+        padding: 10px 0;
+        /* Reduce top-bottom padding */
+    }
+
+    header .nav-links li {
+        margin-left: 10px;
+        /* Reduce spacing between links */
+    }
+
+    header .container img {
+        max-height: 40px;
+        /* Make the logo smaller */
+    }
+}
+
 /* Header Styles */
 .header-container {
     display: flex;
@@ -67,6 +122,8 @@ body {
     align-items: center;
     padding: 15px 20px;
     color: var(--text-color);
+    padding: 0.5em 1.5em;
+    color: white;
 }
 
 .logo-container {
@@ -146,19 +203,19 @@ ul li a {
     }
 }
 
+/* main css  */
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 1em;
+    min-height: calc(100vh - 161px);
 }
-@media (max-width: 600px) {
-    .container{
-        margin-top: 50px;
-    }
+
+.content-box {
+    width: 40em;
 }
 
 .form {
@@ -170,23 +227,24 @@ ul li a {
     padding: 20px;
     background-color: var(--form-bg);
     box-shadow: 5px blanchedalmond;
+    width: 100%;
+    border-radius: 10px;
+    background: url(/assets/bg-img.webp);
+    background-size: 100% 100%;
+    height: 100%;
+    color: #ffff;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 #display {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* display: grid; */
-    /* grid-template-columns: 2fr 1fr;
-    grid-template-rows: 2fr 1fr; */
-}
+    justify-content: space-between;
+    padding: 2em;
 
-#display * {
-    font-family: "Playfair Display", serif;
-    font-size: large;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
+    & h2 {
+        margin-bottom: 1em;
+    }
 }
 
 .temporary {
@@ -212,6 +270,11 @@ ul li a {
     color: var(--hover-text);
 }
 
+.temp-display-box {
+    display: grid;
+    grid-template-rows: max-content;
+}
+
 #temp {
     grid-column-start: 3;
     grid-row-start: 2;
@@ -219,6 +282,17 @@ ul li a {
     align-self: center;
     justify-self: center;
     color: var(--hover-text);
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.temp-line {
+    color: #190ef3;
+    font-weight: normal;
+}
+
+.weather-location-box {
+    align-self: flex-end;
 }
 
 #cname {
@@ -230,25 +304,61 @@ ul li a {
     color: var(--hover-text);
 }
 
-#city {
-    padding: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: x-large;
+.search-input-box{
+    margin-bottom: 1em;
+    position: relative;
 }
 
-#submitBtn {
-    padding: 5px;
+.location-input-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+#city-input {
+    padding: 0.8em 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    border-radius: 10px 0px 0px 10px;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: #3131c623;
+    backdrop-filter: blur(5px);
+    color: #cecece;
+    transition: 0.3s;
+}
+
+#city-input::placeholder {
+    color: #9e9e9e;
+}
+
+#city-input:focus {
+    box-shadow: 0 0 6px 1px #5672d0;
+    background-color: #2e568fab;
+}
+
+#submit-btn {
+    border: 1px solid transparent;
+    background-color: #16325b;
+    color: #ffff;
+    height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
-    margin-top: 10px;
+    aspect-ratio: 1/1;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0;
+    transition: 0.3s;
+    border-left: none;
+
+    & svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
-/* Header Styles */
-/* Reset default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#submit-btn:hover {
+    box-shadow: 0 0 6px 1px #5672d0;
 }
 
 /* Header Styles */
@@ -258,30 +368,29 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--border-color);
     width: 100%;
+#submit-btn:active {
+    background-color: transparent;
 }
 
-/* Header container with flexbox */
-.header-container {
-    display: flex;
-    justify-content: space-between; /* Logo on left, links on right */
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    flex-wrap: wrap; /* Allows wrapping if necessary */
-}
-
-/* Logo styling */
-.logo-container {
+.w-detail-box {
+    width: 50%;
+    background-color: #4e5edc44;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* Prevents logo from shrinking */
+    gap: 1em;
 }
 
-.logo-img {
-    max-height: 50px;
-    margin-right: 10px;
+.oth-weather-content {
+    padding: 1em;
+}
+
+.w-details-head {
+    color: #c0c0c0;
+    font-size: 0.85em;
+    margin-bottom: 0.2em;
 }
 
 .logo-text {
@@ -294,27 +403,36 @@ header {
 nav {
     flex-grow: 1; /* Makes nav take available space */
     text-align: right;
+/* Footer Styles */
+footer {
+    background-color: #0a4584;
+    color: white;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1em;
 }
 
-nav ul {
+.footer-container ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    flex-wrap: wrap; /* Ensures links wrap instead of overflowing */
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 0;
 }
 
-nav ul li {
-    display: inline-block;
+.footer-container ul li {
+    margin-bottom: 8px;
+    /* Default spacing */
 }
 
 nav ul li a {
     color: var(--text-color);
+ul li a {
     text-decoration: none;
-    font-weight: bold;
-    /* padding: 10px 15px; */
-    display: block;
-    transition: background 0.3s ease, color 0.3s ease;
+    color: white;
 }
 
 /* Hover effect */
@@ -322,26 +440,73 @@ nav ul li a:hover {
     background-color: var(--hover-bg);
     color: var(--hover-text);
     border-radius: 5px;
+/* responsive css  */
+@media screen and (max-width: 676px) {
+    .content-box {
+        width: 95vw;
+    }
+
+    #display {
+        padding: 1em;
+    }
 }
 
-/* ✅ Mobile Fix: Keep Background Behind "Contact Us" */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
+@media screen and (max-width: 515px) {
+    .oth-weather-content {
+        flex-flow: wrap;
     }
 
-    nav {
+    .w-detail-box {
+        width: calc(50% - 0.5em);
+    }
+
+    #wicon {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .header-container{
+        padding: 0.5em;
+    }
+    .logo-img{
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-container h1{
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .w-detail-box {
         width: 100%;
     }
+}
 
-    nav ul {
-        justify-content: center; /* Centers nav items */
-        gap: 10px;
+
+/* Reduce footer spacing on smaller screens */
+@media (max-width: 600px) {
+    .footer-container ul li {
+        margin-bottom: 3px;
+        /* Less gap on mobile */
     }
 
-    nav ul li a {
-        padding: 8px 12px;
+    footer {
+        padding: 5px;
+        /* Reduce padding to save space */
     }
+}
+
+/* util classes */
+.d-inline-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.f-bold {
+    font-weight: bold;
 }
