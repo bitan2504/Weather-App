@@ -42,45 +42,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header Styles */
-header {
-  background-color: #5691d0;
-  /* padding: 20px 0; */
-  width: 100%;
-  text-align: center;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid rgb(0, 184, 245);
-}
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px; /* Add some padding for spacing */
-}
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: #ffcb00;
-}
 
 /* Contact Form Container */
 .contact-container {
@@ -145,13 +107,3 @@ nav ul li a:hover {
   }
 }
 
-@media (max-width: 768px) {
-  nav ul {
-      flex-direction: row;
-      text-align: center;
-  }
-
-  nav ul li {
-      margin-bottom: 10px;
-  }
-}
