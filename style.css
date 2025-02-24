@@ -1,3 +1,36 @@
+:root {
+    --bg-color: rgb(81, 81, 240);
+    --text-color: white;
+    --header-bg: #5691d0;
+    --border-color: rgb(0, 184, 245);
+    --footer-bg: #5691d0;
+    --btn-bg: #00bbff;
+    --btn-hover: #f6fafc;
+    --form-bg: aliceblue;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+}
+
+.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --header-bg: #333;
+    --border-color: #444;
+    --btn-bg:#444;
+    --btn-hover: #eeb116;
+    --footer-bg: #333;
+    --form-bg: #2c2c2c;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+}
+
+.dark-mode-toggle {
+    background-color: var(--btn-bg);
+}
+.dark-mode-toggle:hover {
+    background-color: var(--btn-hover);
+    transform: scale(1.05);
+}
 .display-font {
     font-family: "Playfair Display", serif;
     font-size: large;
@@ -17,6 +50,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    background-color: var(--bg-color);
     background-color: #0b0b33;
 }
 
@@ -86,6 +120,8 @@ header .nav-links a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
+    color: var(--text-color);
     padding: 0.5em 1.5em;
     color: white;
 }
@@ -106,7 +142,7 @@ header .nav-links a:hover {
 .logo-text {
     font-size: 24px;
     font-weight: bold;
-    color: #ffffff;
+    color: var(--text-color);
 }
 nav ul {
     list-style: none;
@@ -121,12 +157,50 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     font-size: 18px;
 }
 
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--text-color);
+    padding: 10px;
+    margin-top: 150px;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--border-color);
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 8px; /* Default spacing */
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Reduce footer spacing on smaller screens */
+@media (max-width: 600px) {
+    .footer-container ul li {
+        margin-bottom: 3px; /* Less gap on mobile */
+    }
+
+    footer {
+        padding: 5px; /* Reduce padding to save space */
+    }
 }
 
 /* main css  */
@@ -145,6 +219,14 @@ nav ul li a:hover {
 }
 
 .form {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--form-bg);
+    box-shadow: 5px blanchedalmond;
     width: 100%;
     border-radius: 10px;
     background: url(/assets/bg-img.webp);
@@ -185,6 +267,7 @@ nav ul li a:hover {
     text-align: center;
     align-self: center;
     justify-self: center;
+    color: var(--hover-text);
 }
 
 .temp-display-box {
@@ -193,6 +276,12 @@ nav ul li a:hover {
 }
 
 #temp {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    color: var(--hover-text);
     font-size: 3em;
     font-weight: bold;
 }
@@ -212,6 +301,7 @@ nav ul li a:hover {
     text-align: center;
     align-self: center;
     justify-self: center;
+    color: var(--hover-text);
 }
 
 .search-input-box{
@@ -271,6 +361,13 @@ nav ul li a:hover {
     box-shadow: 0 0 6px 1px #5672d0;
 }
 
+/* Header Styles */
+header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--border-color);
+    width: 100%;
 #submit-btn:active {
     background-color: transparent;
 }
@@ -296,6 +393,16 @@ nav ul li a:hover {
     margin-bottom: 0.2em;
 }
 
+.logo-text {
+    color: var(--text-color);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Navigation styles */
+nav {
+    flex-grow: 1; /* Makes nav take available space */
+    text-align: right;
 /* Footer Styles */
 footer {
     background-color: #0a4584;
@@ -321,11 +428,18 @@ footer {
     /* Default spacing */
 }
 
+nav ul li a {
+    color: var(--text-color);
 ul li a {
     text-decoration: none;
     color: white;
 }
 
+/* Hover effect */
+nav ul li a:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    border-radius: 5px;
 /* responsive css  */
 @media screen and (max-width: 676px) {
     .content-box {
@@ -396,3 +510,4 @@ ul li a {
 .f-bold {
     font-weight: bold;
 }
+}}}}
