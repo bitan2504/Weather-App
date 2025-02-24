@@ -90,10 +90,24 @@ header .nav-links a:hover {
     color: white;
 }
 
-.logo {
-    font-size: 24px;
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
+.logo-img {
+    width: 50px;  /* Set the desired width */
+    height: 50px;
+    border-radius: 10px; /* Set the desired height */
+    object-fit: contain; /* Ensures the image scales properly */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
 nav ul {
     list-style: none;
     margin: 0;
@@ -116,6 +130,44 @@ nav ul li a:hover {
 }
 
 /* main css  */
+
+/* Footer Styles */
+footer {
+    background-color: #5691d0;
+    color: white;
+    padding: 10px;
+    margin-top: 150px;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 184, 245);
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 8px; /* Default spacing */
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Reduce footer spacing on smaller screens */
+@media (max-width: 600px) {
+    .footer-container ul li {
+        margin-bottom: 3px; /* Less gap on mobile */
+    }
+
+    footer {
+        padding: 5px; /* Reduce padding to save space */
+    }
+}
+
 
 .container {
     display: flex;
@@ -263,6 +315,40 @@ nav ul li a:hover {
     backdrop-filter: blur(10px);
     padding: 1em;
     border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Header Styles */
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: #5691d0;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 184, 245);
+    width: 100%;
+}
+
+/* Header container with flexbox */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Logo on left, links on right */
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex-wrap: wrap; /* Allows wrapping if necessary */
+}
+
+/* Logo styling */
+.logo-container {
     display: flex;
     align-items: center;
     gap: 1em;
@@ -291,19 +377,48 @@ footer {
 
 .footer-container ul {
     list-style: none;
+    flex-shrink: 0; /* Prevents logo from shrinking */
+}
+
+.logo-img {
+    max-height: 50px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Navigation styles */
+nav {
+    flex-grow: 1; /* Makes nav take available space */
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
     flex-flow: wrap;
     justify-content: center;
     gap: 1em;
     padding: 0;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap; /* Ensures links wrap instead of overflowing */
 }
 
 .footer-container ul li {
     margin-bottom: 8px;
     /* Default spacing */
+nav ul li {
+    display: inline-block;
 }
 
 ul li a {
+nav ul li a {
+    color: white;
     text-decoration: none;
     color: white;
 }
@@ -362,4 +477,38 @@ ul li a {
 
 .f-bold {
     font-weight: bold;
+}
+    font-weight: bold;
+    /* padding: 10px 15px; */
+    display: block;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    background-color: #ffcb00;
+    color: #000;
+    border-radius: 5px;
+}
+
+/* ✅ Mobile Fix: Keep Background Behind "Contact Us" */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center; /* Centers nav items */
+        gap: 10px;
+    }
+
+    nav ul li a {
+        padding: 8px 12px;
+    }
 }
