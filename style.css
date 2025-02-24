@@ -6,7 +6,32 @@
     font-weight: normal;
     font-style: normal;
 }
-
+:root {
+    --bg-color: rgb(81, 81, 240);
+    --text-color: #1e1e1e;
+    --header-bg: #5691d0;
+    --border-color: rgb(0, 184, 245);
+    --footer-bg: #5691d0;
+    --btn-bg: #00bbff;
+    --btn-hover: #f6fafc;
+    --form-bg: aliceblue;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+  
+  .dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --header-bg: #333;
+    --border-color: #444;
+    --btn-bg:#444;
+    --btn-hover: #eeb116;
+    --footer-bg: #333;
+    --form-bg: #2c2c2c;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+  
 * {
     margin: 0px;
     padding: 0px;
@@ -22,113 +47,129 @@ body {
 }
 
 /* Header Styles */
+/* Ensure header spans full width */
 header {
-    background-color: #0a4584;
-    padding: 5px 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    padding: 10px 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-}
-
-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
-    /* Add some padding for spacing */
 }
 
-header .container img {
-    max-height: 60px;
-}
-
-header .nav-links {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-header .nav-links li {
-    list-style-type: none;
-    margin-left: 20px;
-    /* Default spacing */
-}
-
-header .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-header .nav-links a:hover {
-    color: #ffcb00;
-}
-
-/* Reduce header spacing on smaller screens */
-@media (max-width: 600px) {
-    header {
-        padding: 10px 0;
-        /* Reduce top-bottom padding */
-    }
-
-    header .nav-links li {
-        margin-left: 10px;
-        /* Reduce spacing between links */
-    }
-
-    header .container img {
-        max-height: 40px;
-        /* Make the logo smaller */
-    }
-}
-
-/* Header Styles */
+/* Fix header container */
 .header-container {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1.5em;
-    color: white;
 }
 
+/* Logo container */
 .logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    width: 50px;  /* Set the desired width */
-    height: 50px;
-    border-radius: 10px; /* Set the desired height */
-    object-fit: contain; /* Ensures the image scales properly */
-    margin-right: 10px; /* Space between logo and text */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Ensure alignment to the left */
+    flex-wrap: nowrap; /* Prevents text from wrapping below */
+    gap: 10px; /* Adds spacing between logo and text */
 }
 
 .logo-text {
     font-size: 24px;
     font-weight: bold;
-    color: #ffffff;
+    color: var(--text-color);
+    white-space: nowrap; /* Ensures text stays in a single line */
 }
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+
+
+/* Nav styles */
+nav {
+    flex-grow: 1; /* Allows navigation to take up space */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
+/* Add right margin to all links */
 nav ul li {
-    margin-left: 20px;
+    margin-right: 50px; /* Adds spacing between links and button */
 }
-
+@media(max-width:768px){
+    nav ul li {
+        margin-right: 20px; /* Adds spacing between links and button */
+    }
+}
 nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 18px;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+/* Toggle Button */
+.dark-mode-toggle {
+    margin-left: 20px;
+    padding: 8px 15px;
+    background-color: #ffcb00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
 }
+
+/* Fix mobile layout */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .logo-container {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .dark-mode-toggle {
+        align-self: flex-end;
+    }
+}
+
 
 /* main css  */
 
@@ -143,6 +184,11 @@ nav ul li a:hover {
 
 .content-box {
     width: 40em;
+}
+@media(max-width:600px){
+    .content-box {
+        width: 10em;
+    }
 }
 
 .form {
@@ -299,7 +345,7 @@ nav ul li a:hover {
 
 /* Footer Styles */
 footer {
-    background-color: #0a4584;
+    background-color: var(--bg-color);
     color: white;
     padding: 10px;
     bottom: 0;
