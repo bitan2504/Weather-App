@@ -1,0 +1,17 @@
+# Windows-specific files
+*.lnk
+*.exe
+*.ini
+NTUSER.*
+AppData/
+Desktop.ini
+Downloads/
+Music/
+Videos/
+Pictures/
+
+# Development-related
+node_modules/
+.vscode/
+.idea/
+npm-cache/

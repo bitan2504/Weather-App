@@ -1,12 +1,23 @@
 /* General Styles */
 body {
+<<<<<<< HEAD
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f4f4f4;
+=======
+  font-family: ubuntu;
+  margin: 0;
+  padding: 0;
+  background: #f9fafb;
+  color: #2a2e35;
+  line-height: 1.8;
+  box-sizing: border-box;
+>>>>>>> 68a3d58 (Fix the error of about page)
 }
 
 /* About Section Styling */
 .about-container {
+<<<<<<< HEAD
   max-width: 800px;
   margin: 50px auto;
   padding: 30px;
@@ -53,3 +64,169 @@ body {
     padding-bottom: 50px; /* More gap for smaller screens */
   }
 }
+=======
+  height: auto;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 50px 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding-bottom: 80px;
+  transition: transform 0.3s ease;
+}
+
+.about-container:hover {
+  transform: translateY(-5px);
+}
+
+.about-container h2 {
+  color: #5a67d8;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  text-decoration: underline;
+}
+
+.about-container h3 {
+  font-family: "Ubuntu", serif;
+  margin: 40px 0 20px 0;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.about-container p {
+  color: #000000;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Lists Styling */
+.about-container ul,
+.about-container ol {
+  text-align: left;
+  margin: 30px auto;
+  padding-left: 30px;
+  max-width: 800px;
+}
+
+.about-container ul li,
+.about-container ol li {
+  margin-bottom: 12px;
+}
+
+.why-choose-points li {
+  list-style-type: none;
+  padding-left: 10px;
+  position: relative;
+}
+
+.why-choose-points li::before {
+  content: '👉';
+  position: absolute;
+  left: -30px;
+  font-size: 18px;
+  color: #48bb78;
+}
+
+/* About Page Sections */
+.about-page-sections {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #2d3748;
+  background: linear-gradient(135deg, #e9f5f9, #edf2f7);
+  padding: 20px;
+  border-radius: 12px;
+  gap: 30px;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.about-page-sections:hover {
+cursor: pointer;
+  background: linear-gradient(135deg, #dbeafe, #c6f6d5);
+  transform: scale(1.02);
+}
+
+.about-page-sections h3 {
+  padding-left: 10px;
+  color: #4c51bf;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.about-page-sections p {
+  color: #4a5568;
+  font-size: 20px;
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-container {
+    margin: 30px auto;
+    padding: 40px 30px;
+  }
+
+  .about-page-sections {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .about-container h2 {
+    font-size: 34px;
+    text-decoration: underline;
+  }
+
+  .about-container p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    margin: 20px 0;
+    padding: 30px 20px;
+  }
+
+  .about-container h2 {
+    font-size: 30px;
+  }
+
+  .about-container p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .about-page-sections h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 20px 15px;
+  }
+
+  .about-page-sections {
+    padding: 15px;
+  }
+
+  .about-page-sections h3 {
+    font-size: 16px;
+  }
+
+  .about-container h2 {
+    font-size: 26px;
+  }
+}
+>>>>>>> 68a3d58 (Fix the error of about page)
