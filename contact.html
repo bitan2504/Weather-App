@@ -77,16 +77,29 @@
   </footer>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
- const toggleButton = document.getElementById('darkModeToggle');
+        const toggleButton = document.getElementById('darkModeToggle');
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
 
- toggleButton.innerHTML = '🌙'; // Default icon (moon for dark mode toggle)
+        // Apply dark mode if previously enabled
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            toggleButton.innerHTML = '☀️'; // Sun icon for light mode
+        } else {
+            toggleButton.innerHTML = '🌙'; // Moon icon for dark mode
+        }
 
- toggleButton.addEventListener('click', function () {
-     document.body.classList.toggle('dark-mode');
-     toggleButton.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
- });
-});
+        toggleButton.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const darkModeEnabled = document.body.classList.contains('dark-mode');
 
- </script>
+            // Store the dark mode preference in localStorage
+            localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
+
+            // Change icon based on mode
+            toggleButton.innerHTML = darkModeEnabled ? '☀️' : '🌙';
+        });
+    });
+</script>
+
 </body>
 </html>
