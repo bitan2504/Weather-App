@@ -214,11 +214,15 @@ nav ul li a:hover {
     justify-self: center;
 }
 
+.search-input-box{
+    margin-bottom: 1em;
+    position: relative;
+}
+
 .location-input-box {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 #city-input {
