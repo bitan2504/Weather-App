@@ -1,0 +1,444 @@
+.display-font {
+    font-family: "Playfair Display", serif;
+    font-size: large;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --bg-color: rgb(81, 81, 240);
+    --text-color: #1e1e1e;
+    --header-bg: #5691d0;
+    --border-color: rgb(0, 184, 245);
+    --footer-bg: #5691d0;
+    --btn-bg: #00bbff;
+    --btn-hover: #f6fafc;
+    --form-bg: aliceblue;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+  
+  .dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --header-bg: #333;
+    --border-color: #444;
+    --btn-bg:#444;
+    --btn-hover: #eeb116;
+    --footer-bg: #333;
+    --form-bg: #2c2c2c;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+  
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #0b0b33;
+}
+
+/* Header Styles */
+/* Ensure header spans full width */
+header {
+    width: 100%;
+    background-color: var(--bg-color);
+    padding: 10px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Fix header container */
+.header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo container */
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Ensure alignment to the left */
+    flex-wrap: nowrap; /* Prevents text from wrapping below */
+    gap: 10px; /* Adds spacing between logo and text */
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    white-space: nowrap; /* Ensures text stays in a single line */
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+
+
+/* Nav styles */
+nav {
+    flex-grow: 1; /* Allows navigation to take up space */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add right margin to all links */
+nav ul li {
+    margin-right: 50px; /* Adds spacing between links and button */
+}
+@media(max-width:768px){
+    nav ul li {
+        margin-right: 20px; /* Adds spacing between links and button */
+    }
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+/* Toggle Button */
+.dark-mode-toggle {
+    margin-left: 20px;
+    padding: 8px 15px;
+    background-color: #ffcb00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Fix mobile layout */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .logo-container {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .dark-mode-toggle {
+        align-self: flex-end;
+    }
+}
+
+
+/* main css  */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1em;
+    min-height: calc(100vh - 161px);
+}
+
+.content-box {
+    width: 40em;
+}
+@media(max-width:600px){
+    .content-box {
+        width: 10em;
+    }
+}
+
+.form {
+    width: 100%;
+    border-radius: 10px;
+    background: url(/assets/bg-img.webp);
+    background-size: 100% 100%;
+    height: 100%;
+    color: #ffff;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+#display {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+
+    & h2 {
+        margin-bottom: 1em;
+    }
+}
+
+.temporary {
+    align-self: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#wicon {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-self: center;
+}
+
+#wname {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+.temp-display-box {
+    display: grid;
+    grid-template-rows: max-content;
+}
+
+#temp {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.temp-line {
+    color: #190ef3;
+    font-weight: normal;
+}
+
+.weather-location-box {
+    align-self: flex-end;
+}
+
+#cname {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+
+.search-input-box{
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.location-input-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+#city-input {
+    padding: 0.8em 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    border-radius: 10px 0px 0px 10px;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: #3131c623;
+    backdrop-filter: blur(5px);
+    color: #cecece;
+    transition: 0.3s;
+}
+
+#city-input::placeholder {
+    color: #9e9e9e;
+}
+
+#city-input:focus {
+    box-shadow: 0 0 6px 1px #5672d0;
+    background-color: #2e568fab;
+}
+
+#submit-btn {
+    border: 1px solid transparent;
+    background-color: #16325b;
+    color: #ffff;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    aspect-ratio: 1/1;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0;
+    transition: 0.3s;
+    border-left: none;
+
+    & svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+#submit-btn:hover {
+    box-shadow: 0 0 6px 1px #5672d0;
+}
+
+#submit-btn:active {
+    background-color: transparent;
+}
+
+.w-detail-box {
+    width: 50%;
+    background-color: #4e5edc44;
+    backdrop-filter: blur(10px);
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.oth-weather-content {
+    padding: 1em;
+}
+
+.w-details-head {
+    color: #c0c0c0;
+    font-size: 0.85em;
+    margin-bottom: 0.2em;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--bg-color);
+    color: white;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1em;
+}
+
+.footer-container ul {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 8px;
+    /* Default spacing */
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* responsive css  */
+@media screen and (max-width: 676px) {
+    .content-box {
+        width: 95vw;
+    }
+
+    #display {
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .oth-weather-content {
+        flex-flow: wrap;
+    }
+
+    .w-detail-box {
+        width: calc(50% - 0.5em);
+    }
+
+    #wicon {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .header-container{
+        padding: 0.5em;
+    }
+    .logo-img{
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-container h1{
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .w-detail-box {
+        width: 100%;
+    }
+}
+
+
+/* Reduce footer spacing on smaller screens */
+@media (max-width: 600px) {
+    .footer-container ul li {
+        margin-bottom: 3px;
+        /* Less gap on mobile */
+    }
+
+    footer {
+        padding: 5px;
+        /* Reduce padding to save space */
+    }
+}
+
+/* util classes */
+.d-inline-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.f-bold {
+    font-weight: bold;
+}
