@@ -1,0 +1,116 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(81, 81, 240);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+:root {
+  --bg-color: rgb(81, 81, 240);
+  --text-color: #1e1e1e;
+  --header-bg: #5691d0;
+  --border-color: rgb(0, 184, 245);
+  --footer-bg: #5691d0;
+  --btn-bg: rgb(81, 81, 240) !important;
+  --btn-hover: #f6fafc;
+  --form-bg: aliceblue;
+  --hover-bg: #ffcb00;
+  --hover-text: #000;
+}
+
+.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  --header-bg: #333;
+  --border-color: #444;
+  --btn-bg:#444;
+  --btn-hover: #eeb116;
+  --footer-bg: #333;
+  --form-bg: #2c2c2c;
+  --hover-bg: #ffcb00;
+  --hover-text: #000;
+}
+
+/* Feedback container */
+.feedback-container {
+  background: var(--form-bg);
+  padding: 20px;
+  border-radius: 12px;
+  color: var(--text-color);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+  margin: 80px auto; /* Centers horizontally */
+}
+
+
+/* Title */
+.feedback-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Subtext */
+.feedback-subtext {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Input fields */
+.feedback-input,
+.feedback-textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.feedback-textarea {
+  resize: none;
+}
+
+/* Button */
+.feedback-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.feedback-button:hover {
+  background-color: #e68900;
+}
+
+/* Message */
+.feedback-message {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+
+
+
+@media (max-width: 480px) {
+  
+
+  .feedback-container {
+    width: 90%; /* Adjust width for smaller screens */
+    margin-top: 100px; /* Increased margin for proper spacing */
+  }
+
+  .feedback-title {
+    font-size: 20px; /* Slightly reduce text size */
+  }
+}
