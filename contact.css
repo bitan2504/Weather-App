@@ -40,6 +40,7 @@ body {
   flex-direction: column; /* Stack elements in a column */
   align-items: center;
   min-height: 100vh;
+  transition: background-color 0.9s ease, color 0.9s ease;
 }
 
 

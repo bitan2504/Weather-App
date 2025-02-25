@@ -1,12 +1,5 @@
-.display-font {
-    font-family: "Playfair Display", serif;
-    font-size: large;
-    font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
-}
 :root {
-    --bg-color: rgb(81, 81, 240);
+    --bg-color: #7a776d;
     --text-color: #1e1e1e;
     --header-bg: #5691d0;
     --border-color: rgb(0, 184, 245);
@@ -16,10 +9,17 @@
     --form-bg: aliceblue;
     --hover-bg: #ffcb00;
     --hover-text: #000;
-  }
-  
+}
+
+.display-font {
+    font-family: "Playfair Display", serif;
+    font-size: large;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
   .dark-mode {
-    --bg-color: #1e1e1e;
+    --bg-color: #06081b;
     --text-color: #ffffff;
     --header-bg: #333;
     --border-color: #444;
@@ -42,7 +42,94 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #0b0b33;
+    background-color: #0077B6;
+    color: #1A1A1A;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Fade animation for theme change or page change */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Dark mode */
+.dark-mode {
+    background-color: #475569;
+    color: white;
+}
+
+.dark-mode-toggle {
+    position: sticky;
+    top: 10px;
+    right: 10px;
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #8f94fb, #4e54c8);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    flex-direction: column;
+}
+
+#city {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    background: #aeacac;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    margin-top: 1em;
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.suggestions-list li:hover {
+    background-color: #5691d0;
 }
 
 /* Header Styles */
@@ -51,7 +138,7 @@ header {
     width: 100%;
     background-color: var(--bg-color);
     padding: 10px 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -89,8 +176,6 @@ header {
     object-fit: contain;
 }
 
-
-
 /* Nav styles */
 nav {
     flex-grow: 1; /* Allows navigation to take up space */
@@ -120,18 +205,6 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 18px;
-}
-
-/* Toggle Button */
-.dark-mode-toggle {
-    margin-left: 20px;
-    padding: 8px 15px;
-    background-color: #fff;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
 }
 
 /* Fix mobile layout */
@@ -171,7 +244,6 @@ nav ul li a {
 
 
 /* main css  */
-
 .container {
     display: flex;
     flex-direction: column;
@@ -244,7 +316,7 @@ nav ul li a {
 }
 
 .temp-line {
-    color: #190ef3;
+    color: #000000;
     font-weight: normal;
 }
 
@@ -271,6 +343,10 @@ nav ul li a {
     align-items: center;
 }
 
+.location-input-box input[type = 'text']{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 #city-input {
     padding: 0.8em 1em;
     font-family: Arial, Helvetica, sans-serif;
@@ -278,24 +354,24 @@ nav ul li a {
     border-radius: 10px 0px 0px 10px;
     outline: none;
     border: 1px solid transparent;
-    background-color: #3131c623;
+    background-color: #00000023;
     backdrop-filter: blur(5px);
     color: #cecece;
     transition: 0.3s;
 }
 
 #city-input::placeholder {
-    color: #9e9e9e;
+    color: #ffffff;
 }
 
 #city-input:focus {
     box-shadow: 0 0 6px 1px #5672d0;
-    background-color: #2e568fab;
+    background-color: #0f0f0fab;
 }
 
 #submit-btn {
     border: 1px solid transparent;
-    background-color: #16325b;
+    background-color: #010101;
     color: #ffff;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
@@ -314,7 +390,7 @@ nav ul li a {
 }
 
 #submit-btn:hover {
-    box-shadow: 0 0 6px 1px #5672d0;
+    box-shadow: 0 0 6px 1px #2d2d2d;
 }
 
 #submit-btn:active {
@@ -344,13 +420,21 @@ nav ul li a {
 
 /* Footer Styles */
 footer {
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
     color: white;
-    padding: 10px;
+    padding: 30px 20px;
     bottom: 0;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 1em;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 2em;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    transition: background 0.5s ease;
+}
+
+footer:hover {
+    background: linear-gradient(135deg, #8f94fb, #4e54c8);
 }
 
 .footer-container ul {
@@ -358,18 +442,30 @@ footer {
     display: flex;
     flex-flow: wrap;
     justify-content: center;
-    gap: 1em;
+    gap: 1.5em;
     padding: 0;
+    margin: 0;
 }
 
 .footer-container ul li {
     margin-bottom: 8px;
-    /* Default spacing */
+    transition: transform 0.3s ease;
+}
+
+.footer-container ul li:hover {
+    transform: translateY(-5px);
 }
 
 ul li a {
     text-decoration: none;
     color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #ffdd57;
 }
 
 /* responsive css  */
