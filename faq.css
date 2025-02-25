@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background: rgb(81, 81, 240);
+  margin: 100px;
+  padding: 0;
+  color: #333;
+}
+.display-font {
+  font-family: "Playfair Display", serif;
+  font-size: large;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --bg-color: rgb(81, 81, 240);
+  --text-color: #1e1e1e;
+  --header-bg: #5691d0;
+  --border-color: rgb(0, 184, 245);
+  --footer-bg: #5691d0;
+  --btn-bg: #00bbff;
+  --btn-hover: #f6fafc;
+  --form-bg: aliceblue;
+  --hover-bg: #ffcb00;
+  --hover-text: #000;
+}
+
+.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  --header-bg: #333;
+  --border-color: #444;
+  --btn-bg:#444;
+  --btn-hover: #eeb116;
+  --footer-bg: #333;
+  --form-bg: #2c2c2c;
+  --hover-bg: #ffcb00;
+  --hover-text: #000;
+}
+/* Container */
+.faq-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.faq-box h2{
+  text-align: center;
+}
+.faq-container {
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 30px;
+  background: var(--form-bg);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  color: #007bff;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* FAQ Item */
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Question Section */
+.faq-question {
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+@media(max-width:413px){
+  .faq-item{
+    min-width: 50px;
+    overflow-wrap: break-word;
+  }
+ 
+}
+.faq-item:hover .question {
+  color: #007bff;
+}
+
+/* Answer Section */
+.faq-answer {
+  display: none;
+  font-size: 18px;
+  color: var(--text-color);
+  border-left: 4px solid #007bff;
+  padding-left: 20px;
+  margin-top: 10px;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.faq-answer.active {
+  display: block;
+}
+
+/* Icon Styling */
+.icon {
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.rotate {
+  transform: rotate(180deg);
+}
+
+.navbar {
+  /* margin: 7px; */
+  /* width: 100%; */
+  /* position: absolute; */
+  /* background: rgba(255, 255, 255, 0); */
+  /* padding: 4px; */
+  display: flex;
+  justify-content: flex-end;
+}
