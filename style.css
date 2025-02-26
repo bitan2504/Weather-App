@@ -356,8 +356,12 @@ nav ul li a {
     border: 1px solid transparent;
     background-color: #00000023;
     backdrop-filter: blur(5px);
-    color: #ffffff;
+    color: #000000;
     transition: 0.3s;
+}
+
+.dark-mode #city-input{
+    color: white;
 }
 
 #city-input::placeholder {
@@ -371,6 +375,7 @@ nav ul li a {
 #city-input:focus {
     box-shadow: 0 0 6px 1px #5672d0;
     background-color: #0f0f0fab;
+    color: white;
 }
 
 
