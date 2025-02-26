@@ -39,6 +39,14 @@ body {
   transition: background-color 1s ease, color 1s ease;
 }
 
+/* Nav style  */
+.logo{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 15px;
+}
+
 /* About Section Styling */
 .about-container {
   height: auto;
