@@ -45,7 +45,7 @@ const toggling_btn = (c,f)=>{
     console.log(c,f)
     toggle_CtoF_btn.addEventListener('click',()=>{
         centi = (centi)?false:true;
-        (centi)?toggle_CtoF_btn.innerHTML="Farenheit":toggle_CtoF_btn.innerHTML='centrigrde';
+        (centi)?toggle_CtoF_btn.innerHTML="fahrenheit":toggle_CtoF_btn.innerHTML='celsius';
         (centi)?temp.innerHTML = `${c}°C`:temp.innerHTML = `${f}°F`
     })
 }
