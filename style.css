@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #7a776d;
+    --bg-color: #5db8fe;
     --text-color: #1e1e1e;
     --header-bg: #5691d0;
     --border-color: rgb(0, 184, 245);
@@ -42,7 +42,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #0077B6;
+    background-color: #F0F4F8;
     color: #1A1A1A;
     transition: background-color 0.5s ease, color 0.5s ease;
     animation: fadeIn 0.8s ease-in-out;
@@ -98,7 +98,7 @@ body {
     width: 300px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #afafaf;
     border-radius: 5px;
     outline: none;
     text-align: center;
@@ -356,18 +356,24 @@ nav ul li a {
     border: 1px solid transparent;
     background-color: #00000023;
     backdrop-filter: blur(5px);
-    color: #cecece;
+    color: #ffffff;
     transition: 0.3s;
 }
 
 #city-input::placeholder {
-    color: #ffffff;
+    color: #000000;
+}
+
+.dark-mode #city-input::placeholder{
+    color: #fff;
 }
 
 #city-input:focus {
     box-shadow: 0 0 6px 1px #5672d0;
     background-color: #0f0f0fab;
 }
+
+
 
 #submit-btn {
     border: 1px solid transparent;
