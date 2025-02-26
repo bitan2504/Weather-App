@@ -8,11 +8,12 @@ const crLocation = document.getElementById('location');
 const weatherBox = document.getElementById('weather-box');
 const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
+const cityInput=document.getElementById('city-input');
 
 function getWeather() {
     const API_key = 'ac031c67f89e43c190e8474cc99314ae';
     // const city_name = 'Jangipur';
-    const city_name = document.getElementById('city-input').value;
+    const city_name = cityInput.value;
 
     if (!city_name) {
         console.log('Please Enter Something');
@@ -90,8 +91,18 @@ function showSuggestions() {
 }
 
 // Hide suggestions when clicking outside
-document.addEventListener("click", function (event) {
+document.addEventListener("click,keypress", function (event) {
     if (!event.target.matches("#city-input")) {
-        suggestionsList.style.display = "none";
+        suggestionsList.remove()
     }
 });
+
+//When user press "Enter"
+cityInput.addEventListener('keypress',function(event){
+    if(event.key==='Enter'){
+        event.preventDefault();
+        suggestionsList.remove()
+        getWeather();
+    }
+});
+
