@@ -556,3 +556,14 @@ ul li a:hover {
 .f-bold {
     font-weight: bold;
 }
+
+/* C to F toggling btn */
+#toggle{
+    padding:6px 2px;
+    border-radius: 10px;
+
+}
+#toggle:hover{
+    background:rgb(169, 224, 169);
+    cursor: pointer;
+}
