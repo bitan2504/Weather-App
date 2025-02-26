@@ -43,7 +43,13 @@ body {
   transition: background-color 0.9s ease, color 0.9s ease;
 }
 
-
+/* Nav style  */
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+}
 
 /* Contact Form Container */
 .contact-container {

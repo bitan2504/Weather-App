@@ -162,6 +162,13 @@ header {
     gap: 10px; /* Adds spacing between logo and text */
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
 .logo-text {
     font-size: 24px;
     font-weight: bold;
