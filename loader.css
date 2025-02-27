@@ -1,0 +1,108 @@
+/* Full-page loader container */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #3b3b3b, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Weather loader (sun + cloud) */
+.weather-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Sun shape */
+.sun {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffd700, #ffa500);
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    animation: spin 10s linear infinite;
+    z-index: -1;
+    opacity: 1;
+    mix-blend-mode: screen;
+}
+
+/* Cloud shape */
+.cloud {
+    position: relative;
+    width: 140px;
+    height: 90px;
+}
+
+/* Cloud puffs */
+.cloud-part {
+    position: absolute;
+    background: radial-gradient(circle, #ffffff 40%, #f0f0f0 90%);
+    border-radius: 50%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    mix-blend-mode: lighten;
+}
+
+/* Large cloud puff */
+.cloud-part.big {
+    width: 100px;
+    height: 50px;
+    top: 20px;
+    left: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    opacity: 1;
+}
+
+/* Medium cloud puff */
+.cloud-part.medium {
+    width: 85px;
+    height: 60px;
+    top: -5px;
+    left: 20px;
+    z-index: -1;
+    opacity: 1;
+}
+
+/* Floating animation (for the cloud and sun) */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Gentle sun spin animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide loader after page load */
+.hidden {
+    display: none;
+}
