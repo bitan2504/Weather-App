@@ -9,7 +9,7 @@ const crLocation = document.getElementById('location');
 const weatherBox = document.getElementById('weather-box');
 const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
-const loader = document.getElementById('apiLoader')
+
 const toggle_CtoF_btn = document.getElementById('toggle')
 let centi = true;
 
@@ -31,23 +31,18 @@ function getWeather() {
     const WEATHER_url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_key}`;
     // const FORECAST_url = `https://api.openweathermap.org/data/2.5/forecast?q=${city_name}&appid=${API_key}`;
 
-    loader.style.display = 'block';
-    setTimeout(() => {
-        fetch(WEATHER_url)
-            .then(res => res.json())
-            .then(data => {
-                displayWeather(data);
-                loader.style.display = 'none';  // Hide loader after data fetch
-            })
-            .catch(err => {
-                console.error(err);
-                loader.style.display = 'none';  // Ensure loader is hidden on error
-                alert("Error fetching url!");
-            });
-    }, 500);  // 100ms delay for the UI to show the loader
-
+    fetch(WEATHER_url)
+        .then(res => res.json())
+        .then(data => {
+            displayWeather(data);
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Error fetching url!");
+        });
 }
 const toggling_btn = (c,f)=>{
+    console.log(c,f)
     toggle_CtoF_btn.addEventListener('click',()=>{
         centi = (centi)?false:true;
         (centi)?toggle_CtoF_btn.innerHTML="°F":toggle_CtoF_btn.innerHTML='°C';

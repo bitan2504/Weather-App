@@ -1,116 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback</title>
+    <link rel="stylesheet" href="feedback.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+        <!-- Navbar -->
+        <header>
+          <div class="header-container">
+              <div class="logo-container">
+                  <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
+                  <h1 class="logo-text">Weather App</h1>
+              </div>
+              <nav>
+                  <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <button id="darkModeToggle" class="dark-mode-toggle">Dark Mode</button>
+                  </ul>
+              </nav>
+          </div>
+      </header>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feedback</title>
-  <link rel="stylesheet" href="feedback.css" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="./loader.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
+    <div class="feedback-container">
+      <h2 class="feedback-title">We Value Your Feedback!</h2>
+      <p class="feedback-subtext">Let us know how we can improve.</p>
 
-<body>
+      <form id="feedback-form">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          class="feedback-input"
+          placeholder="Enter your name"
+          required
+        />
 
-<!-- Page loader -->
-<div id="loader" class="loader-container">
-  <div class="weather-loader">
-    <div class="sun"></div>
-    <div class="cloud">
-      <div class="cloud-part big"></div>
-      <div class="cloud-part medium"></div>
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          class="feedback-input"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="rating">Rate Us:</label>
+        <select id="rating" class="feedback-input">
+          <option value="5">⭐⭐⭐⭐⭐ </option>
+          <option value="4">⭐⭐⭐⭐ </option>
+          <option value="3">⭐⭐⭐ </option>
+          <option value="2">⭐⭐ </option>
+          <option value="1">⭐ </option>
+        </select>
+
+        <label for="message">Your Feedback:</label>
+        <textarea
+          id="message"
+          class="feedback-textarea"
+          rows="4"
+          placeholder="Write your feedback here..."
+          required
+        ></textarea>
+
+        <button type="submit" class="feedback-button">Submit Feedback</button>
+      </form>
+
+      <p id="feedback-message" class="feedback-message"></p>
     </div>
-  </div>
-</div>
-
-
-  <!-- Navbar -->
-  <header>
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
-        <h1 class="logo-text">Weather App</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <button id="darkModeToggle" class="dark-mode-toggle">Dark Mode</button>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <div class="feedback-container">
-    <h2 class="feedback-title">We Value Your Feedback!</h2>
-    <p class="feedback-subtext">Let us know how we can improve.</p>
-
-    <form id="feedback-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" class="feedback-input" placeholder="Enter your name" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" class="feedback-input" placeholder="Enter your email" required />
-
-      <label for="rating">Rate Us:</label>
-      <select id="rating" class="feedback-input">
-        <option value="5">⭐⭐⭐⭐⭐ </option>
-        <option value="4">⭐⭐⭐⭐ </option>
-        <option value="3">⭐⭐⭐ </option>
-        <option value="2">⭐⭐ </option>
-        <option value="1">⭐ </option>
-      </select>
-
-      <label for="message">Your Feedback:</label>
-      <textarea id="message" class="feedback-textarea" rows="4" placeholder="Write your feedback here..."
-        required></textarea>
-
-      <button type="submit" class="feedback-button">Submit Feedback</button>
-    </form>
-
-    <p id="feedback-message" class="feedback-message"></p>
-  </div>
-  <!-- footer section -->
-  <footer>
-    <div class="footer-container">
+ <!-- footer section -->
+ <footer>
+  <div class="footer-container">
       <ul>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#feedback">Feedback</a></li>
-        <li><a href="#privacy-policy">Privacy Policy</a></li>
-        <li><a href="#terms">Terms & Conditions</a></li>
-        <p>&copy; 2025 Weather App. All rights reserved.</p>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#privacy-policy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms & Conditions</a></li>
+          <p>&copy; 2025 Weather App. All rights reserved.</p>
       </ul>
-    </div>
-  </footer>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
       const toggleButton = document.getElementById('darkModeToggle');
       const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
 
       // Apply dark mode if previously enabled
       if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-        toggleButton.innerHTML = '☀️'; // Sun icon for light mode
+          document.body.classList.add('dark-mode');
+          toggleButton.innerHTML = '☀️'; // Sun icon for light mode
       } else {
-        toggleButton.innerHTML = '🌙'; // Moon icon for dark mode
+          toggleButton.innerHTML = '🌙'; // Moon icon for dark mode
       }
 
       toggleButton.addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-        const darkModeEnabled = document.body.classList.contains('dark-mode');
+          document.body.classList.toggle('dark-mode');
+          const darkModeEnabled = document.body.classList.contains('dark-mode');
 
-        // Store the dark mode preference in localStorage
-        localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
+          // Store the dark mode preference in localStorage
+          localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
 
-        // Change icon based on mode
-        toggleButton.innerHTML = darkModeEnabled ? '☀️' : '🌙';
+          // Change icon based on mode
+          toggleButton.innerHTML = darkModeEnabled ? '☀️' : '🌙';
       });
-    });
-  </script>
-  <script src="./loader.js"></script>
-  <script src="feedback.js"></script>
-</body>
-
+  });
+</script>
+    <script src="feedback.js"></script>
+  </body>
 </html>
