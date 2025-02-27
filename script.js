@@ -1,6 +1,7 @@
 const display = document.getElementById('display');
 const wicon = document.getElementById('wicon');
 const temp = document.getElementById('temparature');
+const temp1 = document.getElementById('temparature1');
 const pressure = document.getElementById('pressure');
 const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
@@ -8,6 +9,10 @@ const crLocation = document.getElementById('location');
 const weatherBox = document.getElementById('weather-box');
 const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
+
+const toggle_CtoF_btn = document.getElementById('toggle')
+let centi = true;
+
 
 function getWeather() {
     const API_key = 'ac031c67f89e43c190e8474cc99314ae';
@@ -36,11 +41,21 @@ function getWeather() {
             alert("Error fetching url!");
         });
 }
-
+const toggling_btn = (c,f)=>{
+    console.log(c,f)
+    toggle_CtoF_btn.addEventListener('click',()=>{
+        centi = (centi)?false:true;
+        (centi)?toggle_CtoF_btn.innerHTML="°F":toggle_CtoF_btn.innerHTML='°C';
+        (centi)?temp.innerHTML = `${c}°C`:temp.innerHTML = `${f}°F`
+    })
+}
 function displayWeather(data) {
     initMessage.style.display = "none"
     weatherBox.style.display = "block";
-    temp.innerHTML = `${Math.round(data.main.temp - 273)}`;
+    temp.innerHTML = `${Math.round(data.main.temp - 273)}°C`;
+    const centi = Math.round(data.main.temp - 273);
+    const fer = Math.floor((centi * 9)/5 + 32)
+    toggling_btn(centi,fer)
     pressure.innerHTML = data.main.pressure;
     humidity.innerHTML = data.main.humidity;
     crLocation.innerHTML = data.name;
