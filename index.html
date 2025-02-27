@@ -8,22 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./loader.css">
 </head>
 
 <body>
-    <!-- Page loader -->
-    <div id="loader" class="loader-container">
-        <div class="weather-loader">
-            <div class="sun"></div>
-            <div class="cloud">
-                <div class="cloud-part big"></div>
-                <div class="cloud-part medium"></div>
-            </div>
-        </div>
-    </div>
-
-        <!-- Heading and Navbar -->
     <header>
         <div class="header-container">
             <div class="logo-container">
@@ -64,13 +51,6 @@
                     </div>
                     <ul id="suggestions" class="suggestions-list" style="display: none;"></ul>
                 </div>
-
-                <!-- when the api is called Loader will appear -->
-                <div id="apiLoader" class="apiLoader-overlay">
-                    <div class="apiLoaderTwo"></div>
-                </div>
-
-
                 <div style="display: none;" id="weather-box">
                     <div class="form">
                         <div id="display">
@@ -172,14 +152,14 @@
         <div class="footer-container">
             <ul>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="./feedback.html">Feedback</a></li>
-                <li><a href="#privacy-policy">Privacy Policy</a></li>
-                <li><a href="#terms">Terms & Conditions</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
             </ul>
             <p>&copy; 2025 Weather App. All rights reserved.</p>
         </div>
     </footer>
-    <script src="./loader.js"></script>
+    
     <script src="./theme.js"></script>
     <script src="script.js"></script>
 </body>
