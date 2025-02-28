@@ -9,16 +9,9 @@ const crLocation = document.getElementById('location');
 const weatherBox = document.getElementById('weather-box');
 const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
-
-const cityInput=document.getElementById('city-input');
-
-function getWeather() {
-    const API_key = 'ac031c67f89e43c190e8474cc99314ae';
-    // const city_name = 'Jangipur';
-    const city_name = cityInput.value;
-
 const loader = document.getElementById('apiLoader')
 const toggle_CtoF_btn = document.getElementById('toggle')
+const cityInput=document.getElementById('city-input');
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 let centi = true;
@@ -26,7 +19,6 @@ let centi = true;
 function getWeather() {
     const API_key = 'ac031c67f89e43c190e8474cc99314ae';
     const city_name = document.getElementById('city-input').value.trim();
-
 
     if (!city_name) {
         showErrorModal('Please enter a city name!');
@@ -162,9 +154,15 @@ function showSuggestions() {
 }
 
 // Hide suggestions when clicking outside
-document.addEventListener("click,keypress", function (event) {
+document.addEventListener('click', function (event) {
     if (!event.target.matches("#city-input")) {
-        suggestionsList.remove()
+        suggestionsList.remove();
+    }
+});
+
+document.addEventListener('keypress', function (event) {
+    if (!event.target.matches("#city-input")) {
+        suggestionsList.remove();
     }
 });
 
@@ -172,8 +170,8 @@ document.addEventListener("click,keypress", function (event) {
 cityInput.addEventListener('keypress',function(event){
     if(event.key==='Enter'){
         event.preventDefault();
-        suggestionsList.remove()
+        suggestionsList.remove();
         getWeather();
     }
-
+    
 });
