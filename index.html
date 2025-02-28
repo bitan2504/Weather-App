@@ -9,6 +9,106 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./loader.css">
+
+    <!-- Style for the error popup -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Modal Content (Centered Box) */
+        .modal-content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            width: 400px;
+            height: 150px;
+            background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: slideDown 0.4s ease;
+        }
+
+        /* Error Message */
+        .modal-content p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        /* Centered Close Button */
+        .close {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff4e50, #fc913a);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Close Button Hover Effect */
+        .close:hover {
+            background: linear-gradient(135deg, #fc913a, #ff4e50);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        /* Fade Out for Modal Removal */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -70,6 +170,13 @@
                     <div class="apiLoaderTwo"></div>
                 </div>
 
+                <!-- Error popup | When the api is failed to load the data -->
+                <div id="errorModal" class="modal">
+                    <div class="modal-content">
+                        <p id="modalMessage">An error occurred!</p>
+                        <button id="closeModal" class="close">Close</button>
+                    </div>
+                </div>
 
                 <div style="display: none;" id="weather-box">
                     <div class="form">
