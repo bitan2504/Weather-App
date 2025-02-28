@@ -11,6 +11,7 @@ const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
 const loader = document.getElementById('apiLoader')
 const toggle_CtoF_btn = document.getElementById('toggle')
+const cityInput=document.getElementById('city-input');
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 let centi = true;
@@ -153,8 +154,24 @@ function showSuggestions() {
 }
 
 // Hide suggestions when clicking outside
-document.addEventListener("click", function (event) {
+document.addEventListener('click', function (event) {
     if (!event.target.matches("#city-input")) {
-        suggestionsList.style.display = "none";
+        suggestionsList.remove();
     }
+});
+
+document.addEventListener('keypress', function (event) {
+    if (!event.target.matches("#city-input")) {
+        suggestionsList.remove();
+    }
+});
+
+//When user press "Enter"
+cityInput.addEventListener('keypress',function(event){
+    if(event.key==='Enter'){
+        event.preventDefault();
+        suggestionsList.remove();
+        getWeather();
+    }
+    
 });
