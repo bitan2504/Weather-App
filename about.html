@@ -29,26 +29,29 @@
     <!-- Heading and Navbar -->
 
     <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="./index.html" target="_self" class="logo">
-                    <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
-                    <h1 class="logo-text">Weather App</h1>
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <button id="darkModeToggle" class="dark-mode-toggle">
-                        <span id="icon">🌙</span>
-                    </button>
-
-                </ul>
-            </nav>
+        <nav>
+        <div class="logo-container">
+            <a href="./index.html" target="_self" class="logo">
+                <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
+                <h1 class="logo-text">Weather App</h1>
+            </a>
         </div>
-    </header>
+        <input type="checkbox" id="menu">
+        <label for="menu" class="ham">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+          <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact Us</a>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <span id="icon">🌙</span>
+            </button>
+            </div>
+          </nav>
+      </header>
 
     <section class="about-container">
 
