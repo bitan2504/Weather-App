@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  
+    <style>
+        :root {
+    --bg-color: rgb(81, 81, 240);
+    --text-color: #1e1e1e;
+    --header-bg: #5691d0;
+    --border-color: rgb(0, 184, 245);
+    --footer-bg: #5691d0;
+    --btn-bg: #00bbff;
+    --btn-hover: #f6fafc;
+    --form-bg: aliceblue;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+  
+  .dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --header-bg: #333;
+    --border-color: #444;
+    --btn-bg:#444;
+    --btn-hover: #eeb116;
+    --footer-bg: #333;
+    --form-bg: #2c2c2c;
+    --hover-bg: #ffcb00;
+    --hover-text: #000;
+  }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container-terms {
+            max-width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: var(--form-bg);
+        }
+
+        h1 {
+            text-align: center;
+            color:  #3498db;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+        <div class="logo-container">
+            <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
+            <h1 class="logo-text">Weather App</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <button id="darkModeToggle" class="dark-mode-toggle">Dark Mode</button>
+
+            </ul>
+        </nav>
+       
+    </div>
+</header>
+<div class="container-terms">
+  <h1>Terms & Conditions</h1>
+ 
+
+  <h2>1. Introduction</h2>
+  <p>Welcome to <strong>WeatherApp</strong>. By accessing and using our services, you agree to be bound by these terms and conditions.</p>
+
+  <h2>2. Use of Services</h2>
+  <p>You agree to use WeatherApp for lawful purposes only and in a manner that does not infringe the rights of others.</p>
+
+  <h2>3. User Responsibilities</h2>
+  <ul>
+      <li>Do not misuse the weather data provided.</li>
+      <li>Ensure that your account details are kept secure.</li>
+      <li>Comply with all applicable local and international laws.</li>
+  </ul>
+
+  <h2>4. Service Availability</h2>
+  <p>We do not guarantee uninterrupted access to our services. Weather data may be subject to delays or inaccuracies.</p>
+
+  <h2>5. Limitation of Liability</h2>
+  <p>We are not responsible for any damages resulting from your use of our services, including inaccurate weather information.</p>
+
+  <h2>6. Amendments</h2>
+  <p>We reserve the right to modify these terms at any time. Continued use of our services implies acceptance of the new terms.</p>
+
+  <h2>7. Contact Us</h2>
+  <p>If you have any questions regarding these terms, contact us at: <a href="mailto:support@weatherapp.com">support@weatherapp.com</a></p>
+
+  <p><a href="index.html">Back to Home</a></p>
+</div>
+    <footer>
+      <div class="footer-container">
+          <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="feedback.html">Feedback</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+          <p>&copy; 2025 Weather App. All rights reserved.</p>
+      </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButton = document.getElementById('darkModeToggle');
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+        // Apply dark mode if previously enabled
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            toggleButton.innerHTML = '☀️'; // Sun icon for light mode
+        } else {
+            toggleButton.innerHTML = '🌙'; // Moon icon for dark mode
+        }
+
+        toggleButton.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const darkModeEnabled = document.body.classList.contains('dark-mode');
+
+            // Store the dark mode preference in localStorage
+            localStorage.setItem('darkMode', darkModeEnabled ? 'enabled' : 'disabled');
+
+            // Change icon based on mode
+            toggleButton.innerHTML = darkModeEnabled ? '☀️' : '🌙';
+        });
+    });
+</script>
+
+
+<script src="script.js"></script>
+</body>
+</html>

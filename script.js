@@ -1,6 +1,7 @@
 const display = document.getElementById('display');
 const wicon = document.getElementById('wicon');
 const temp = document.getElementById('temparature');
+const temp1 = document.getElementById('temparature1');
 const pressure = document.getElementById('pressure');
 const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
@@ -8,6 +9,7 @@ const crLocation = document.getElementById('location');
 const weatherBox = document.getElementById('weather-box');
 const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
+
 const cityInput=document.getElementById('city-input');
 
 function getWeather() {
@@ -15,33 +17,102 @@ function getWeather() {
     // const city_name = 'Jangipur';
     const city_name = cityInput.value;
 
+const loader = document.getElementById('apiLoader')
+const toggle_CtoF_btn = document.getElementById('toggle')
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+let centi = true;
+
+function getWeather() {
+    const API_key = 'ac031c67f89e43c190e8474cc99314ae';
+    const city_name = document.getElementById('city-input').value.trim();
+
+
     if (!city_name) {
-        console.log('Please Enter Something');
-        alert('Please Enter something!')
+        showErrorModal('Please enter a city name!');
         return;
     }
 
     // Store the searched city in localStorage
     saveSearch(city_name);
 
-    const WEATHER_url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_key}`;
-    // const FORECAST_url = `https://api.openweathermap.org/data/2.5/forecast?q=${city_name}&appid=${API_key}`;
+    const WEATHER_url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city_name)}&appid=${API_key}`;
 
-    fetch(WEATHER_url)
-        .then(res => res.json())
-        .then(data => {
-            displayWeather(data);
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Error fetching url!");
-        });
+    loader.style.display = 'block';
+
+    fetchWeatherData(WEATHER_url);
 }
 
+function fetchWeatherData(url) {
+    setTimeout(() => {
+        fetch(url)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Error: ${res.status} - ${res.statusText}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                displayWeather(data);
+                loader.style.display = 'none';
+            })
+            .catch(err => {
+                loader.style.display = 'none';
+                showErrorModal(`Failed to fetch weather data. Please check your connection or try again later.`);
+            });
+    }, 500);
+}
+// Function to show error modal
+function showErrorModal(message) {
+    const existingModal = document.querySelector('.modal');
+    if (existingModal) existingModal.remove();
+
+    // Create modal structure
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <p id="modalMessage">${message}</p>
+            <button id="closeModal" class="close">Close</button>
+        </div>
+    `;
+
+    // Append modal to body
+    document.body.appendChild(modal);
+
+    // Display the modal
+    setTimeout(() => modal.style.display = "block", 100);
+
+    // Close the modal on button click
+    document.getElementById("closeModal").onclick = () => hideModal(modal);
+
+    // Close the modal when clicking outside
+    window.onclick = (event) => {
+        if (event.target === modal) hideModal(modal);
+    };
+}
+
+// Helper function to hide and remove modal
+function hideModal(modal) {
+    modal.style.animation = "fadeOut 0.3s ease-in-out";
+    setTimeout(() => modal.remove(), 300);
+}
+
+
+const toggling_btn = (c, f) => {
+    toggle_CtoF_btn.addEventListener('click', () => {
+        centi = (centi) ? false : true;
+        (centi) ? toggle_CtoF_btn.innerHTML = "°F" : toggle_CtoF_btn.innerHTML = '°C';
+        (centi) ? temp.innerHTML = `${c}°C` : temp.innerHTML = `${f}°F`
+    })
+}
 function displayWeather(data) {
     initMessage.style.display = "none"
     weatherBox.style.display = "block";
-    temp.innerHTML = `${Math.round(data.main.temp - 273)}`;
+    temp.innerHTML = `${Math.round(data.main.temp - 273)}°C`;
+    const centi = Math.round(data.main.temp - 273);
+    const fer = Math.floor((centi * 9) / 5 + 32)
+    toggling_btn(centi, fer)
     pressure.innerHTML = data.main.pressure;
     humidity.innerHTML = data.main.humidity;
     crLocation.innerHTML = data.name;
@@ -104,7 +175,5 @@ cityInput.addEventListener('keypress',function(event){
         suggestionsList.remove()
         getWeather();
     }
+
 });
-
-
-
