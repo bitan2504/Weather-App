@@ -1,0 +1,22 @@
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0px;
+}
+.section{
+    margin: 3rem 0px;
+    border: 2px solid rgb(110, 110, 110);
+    box-shadow: 0 0 5px rgb(81, 79, 79);
+    padding: 2rem;
+    border-radius: 2rem;
+    font-size: large;
+}
+.section:hover{
+    box-shadow: 0 0 10px rgb(81, 79, 79);
+    scale: 1.02;
+    transition: 0.5s;
+}
+.section ul{
+    list-style-type: none;
+    padding: 0px;
+}
