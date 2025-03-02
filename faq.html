@@ -10,31 +10,9 @@
   <link rel="stylesheet" href="./loader.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="loader.css">
   <style>
-    header {
-      padding: 24px 2px;
-    }
-
-    ul {
-      line-height: 1.8;
-      margin-bottom: 15px;
-      /* Added spacing below paragraphs and lists */
-    }
-
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .logo {
-      margin-left: 10px;
-
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
+    
     /* Search bar styling */
     .search-container {
       text-align: center;
@@ -53,27 +31,6 @@
       outline: none;
     }
 
-    .highlight {
-      background-color: yellow;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: white;
-    }
-
-    .dark-mode-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 10px 15px;
-      border: none;
-      color: black;
-      cursor: pointer;
-      border-radius: 100%;
-      transition: background 0.3s, transform 0.2s;
-      z-index: 1000;
-    }
   </style>
 </head>
 
@@ -92,19 +49,28 @@
   <!-- Navbar -->
   <header>
     <div class="header-container">
-      <div class="logo-container">
-        <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
-        <h1 class="logo-text">Weather App</h1>
-      </div>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <button id="darkModeToggle" class="dark-mode-toggle">Dark Mode</button>
-        </ul>
-      </nav>
+        <div class="logo-container">
+            <a href="./index.html" target="_self" class="logo">
+                <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
+                <h1 class="logo-text">Weather App</h1>
+            </a>
+        </div>
+        <input type="checkbox" id="menu">
+        <label for="menu" class="ham">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+          <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact Us</a>
+            <button id="darkModeToggle" class="dark-mode-toggle">
+                <span id="icon">🌙</span>
+            </button>
+            </div>
+          </nav>
     </div>
   </header>
   <!-- Search Bar -->
