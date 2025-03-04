@@ -574,9 +574,6 @@ ul li a:hover {
 }
 
 @media screen and (max-width: 440px) {
-    .header-container{
-        padding: 0.5em;
-    }
     .logo-img{
         margin-right: 5px;
         width: 30px;
