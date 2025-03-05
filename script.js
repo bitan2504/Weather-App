@@ -192,5 +192,5 @@ cityInput.addEventListener('input', function() {
 clearBtn.addEventListener('click', function() {
     cityInput.value = '';
     clearBtn.style.display = 'none';
-    cityInput.focus(); 
+    cityInput.focus(); // Optionally focus back on the input
 });
