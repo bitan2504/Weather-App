@@ -11,9 +11,10 @@ const initMessage = document.getElementById('init-message');
 const suggestionsList = document.getElementById("suggestions");
 const loader = document.getElementById('apiLoader')
 const toggle_CtoF_btn = document.getElementById('toggle')
-const cityInput=document.getElementById('city-input');
+const cityInput = document.getElementById('city-input');
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
+const weatherSuggestion = document.getElementById('weather-suggestion')
 let centi = true;
 
 function getWeather() {
@@ -54,6 +55,43 @@ function fetchWeatherData(url) {
             });
     }, 500);
 }
+
+// Function to show the suggestion of the Activity that can be done in current time
+const showActivitySuggestion = (weatherData) => {
+    const tempC = Math.round(weatherData.main.temp - 273); // Temperature in Celsius
+    const weatherCondition = weatherData.weather[0].main.toLowerCase();
+    let suggestion = '';
+
+    // Suggestions based on temperature and weather conditions
+    if (tempC > 25) {
+        if (weatherCondition.includes('clear') || weatherCondition.includes('sun')) {
+            suggestion = "It's hot and sunny! Perfect day for a swim or a picnic.";
+        } else if (weatherCondition.includes('rain')) {
+            suggestion = "It's warm but rainy. Maybe enjoy a movie indoors or dance in the rain!";
+        } else {
+            suggestion = "It's warm outside. How about a leisurely walk or some outdoor games?";
+        }
+    } else if (tempC >= 10 && tempC <= 25) {
+        if (weatherCondition.includes('clear') || weatherCondition.includes('sun')) {
+            suggestion = "Pleasant weather! Ideal for a hike or a bike ride.";
+        } else if (weatherCondition.includes('rain')) {
+            suggestion = "Mild and rainy. Good time for reading by the window or a cozy cafe visit.";
+        } else {
+            suggestion = "Comfortable day! Maybe try gardening or a casual stroll.";
+        }
+    } else if (tempC < 10) {
+        if (weatherCondition.includes('snow')) {
+            suggestion = "Snowy day! Time for snowboarding or building a snowman.";
+        } else if (weatherCondition.includes('clear')) {
+            suggestion = "Chilly but clear. Bundle up for a brisk walk or enjoy hot cocoa outside.";
+        } else {
+            suggestion = "It's cold out there. Perfect for indoor crafts or a warm soup day.";
+        }
+    }
+
+    return suggestion;
+}
+
 // Function to show error modal
 function showErrorModal(message) {
     const existingModal = document.querySelector('.modal');
@@ -113,6 +151,7 @@ function displayWeather(data) {
     const iconCode = data.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
     wicon.src = iconUrl;
+    weatherSuggestion.innerHTML = showActivitySuggestion(data)
 }
 
 function saveSearch(city) {
@@ -168,8 +207,8 @@ document.addEventListener('keypress', function (event) {
 });
 
 //When user press "Enter"
-cityInput.addEventListener('keypress',function(event){
-    if(event.key==='Enter'){
+cityInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
         event.preventDefault();
         suggestionsList.remove();
         getWeather();
