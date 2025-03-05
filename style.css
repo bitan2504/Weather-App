@@ -507,8 +507,16 @@ nav {
 #init-message{
     font-size: 1.5em;
     color: #000000;
-    background-color: #e1d8d823;`
+    background: rgb(15,245,153);
+background: linear-gradient(120deg, rgba(15,245,153,1) 0%, rgba(82,210,255,1) 50%, rgba(6,138,223,1) 100%);
+    padding: 0.5rem 0;
     margin-top: 1em;
+    border-radius: 10px;
+}
+.dark-mode #init-message{
+    color: white;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 27%, rgba(9,9,121,1) 65%, rgba(0,212,255,1) 100%);
 }
 /* Footer Styles */
 footer {
