@@ -142,6 +142,7 @@ function showSuggestions() {
                 li.onclick = () => {
                     document.getElementById("city-input").value = city;
                     suggestionsList.style.display = "none";
+                    getWeather();
                 };
                 suggestionsList.appendChild(li);
             });
