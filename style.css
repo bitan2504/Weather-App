@@ -64,6 +64,7 @@ body {
     padding: 0;
     text-align: center;
     /* background-color: #F0F4F8; */
+    backdrop-filter: blur(8px);
     background-image: url(./assets/day-pic.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -729,4 +730,13 @@ ul li a:hover {
     left: 0;
     right: 0;
     opacity: 1;
+}
+
+
+/* Weather suggestion  */
+#weather-suggestion {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #fff;
+
 }
