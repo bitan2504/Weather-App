@@ -126,46 +126,72 @@
 
     <!-- Heading and Navbar -->
     <header>
-        <nav>
-            <div class="logo-container">
-                <a href="./index.html" target="_self" class="logo">
-                    <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
-                    <h1 class="logo-text">Weather App</h1>
-                </a>
-            </div>
-            <input type="checkbox" id="menu">
-            <label for="menu" class="ham">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <div class="nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact Us</a>
-                <button id="darkModeToggle" class="dark-mode-toggle">
-                    <span id="icon">🌙</span>
-                </button>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo-container">
+          <a href="./index.html" target="_self" class="logo">
+            <img
+              src="./assets/weatherlogo.jpeg"
+              alt="Weather App Logo"
+              class="logo-img"
+            />
+            <h1 class="logo-text">Weather App</h1>
+          </a>
+        </div>
+        <input type="checkbox" id="menu" />
+        <label for="menu" class="ham">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact Us</a>
+          <button id="darkModeToggle" class="dark-mode-toggle">
+            <span id="icon">🌙</span>
+          </button>
+        </div>
+      </nav>
     </header>
     <main>
       <div class="container">
         <div class="content-box">
           <div class="search-input-box">
             <div class="location-input-box">
-                <input type="text" title="city" name="city" id="city-input" placeholder="Enter your location" autocomplete="off" onkeyup="showSuggestions()">
-                <button onclick="getWeather()" class="submit-btn" id="submit-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z"></path>
-                    </svg>
-                </button>
-                <!-- Clear Button -->
-                <button id="clear-btn" class="clear-btn" style="display: none;">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                        <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>
-                    </svg>
-                </button>
+              <input
+                type="text"
+                title="city"
+                name="city"
+                id="city-input"
+                placeholder="Enter your location"
+                autocomplete="off"
+                onkeyup="showSuggestions()"
+              />
+              <button onclick="getWeather()" class="submit-btn" id="submit-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z"
+                  ></path>
+                </svg>
+              </button>
+              <!-- Clear Button -->
+              <button id="clear-btn" class="clear-btn" style="display: none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  width="20"
+                  height="20"
+                >
+                  <path
+                    d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                  />
+                </svg>
+              </button>
             </div>
             <ul
               id="suggestions"

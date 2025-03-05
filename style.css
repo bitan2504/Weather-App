@@ -508,7 +508,29 @@ nav {
     position: relative; 
 }
 
+/* Geolocation Button */
+.geolocation-btn {
+    position: absolute;
+    right: 80px; /* Adjust this value based on your layout */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.geolocation-btn svg {
+    fill: #888;
+    transition: fill 0.3s ease;
+}
+
+.geolocation-btn:hover svg {
+    fill: #333;
+}
 
 #submit-btn {
     border: 1px solid transparent;
