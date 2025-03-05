@@ -1,295 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./loader.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./loader.css" />
 
     <!-- Style for the error popup -->
     <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease-in-out;
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      /* Modal Content (Centered Box) */
+      .modal-content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        width: 400px;
+        height: 150px;
+        background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: slideDown 0.4s ease;
+      }
+
+      /* Error Message */
+      .modal-content p {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        line-height: 1.6;
+        word-break: break-word;
+      }
+
+      /* Centered Close Button */
+      .close {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        padding: 8px 16px;
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #ff4e50, #fc913a);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Close Button Hover Effect */
+      .close:hover {
+        background: linear-gradient(135deg, #fc913a, #ff4e50);
+        transform: translateX(-50%) scale(1.1);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
 
-        /* Modal Content (Centered Box) */
-        .modal-content {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            width: 400px;
-            height: 150px;
-            background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            animation: slideDown 0.4s ease;
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translate(-50%, -60%);
+          opacity: 0;
         }
 
-        /* Error Message */
-        .modal-content p {
-            margin: 0;
-            font-size: 16px;
-            color: #333;
-            line-height: 1.6;
-            word-break: break-word;
+        to {
+          transform: translate(-50%, -50%);
+          opacity: 1;
+        }
+      }
+
+      /* Fade Out for Modal Removal */
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
         }
 
-        /* Centered Close Button */
-        .close {
-            position: absolute;
-            left: 50%;
-            bottom: 10px;
-            transform: translateX(-50%);
-            padding: 8px 16px;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #ff4e50, #fc913a);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        to {
+          opacity: 0;
         }
-
-        /* Close Button Hover Effect */
-        .close:hover {
-            background: linear-gradient(135deg, #fc913a, #ff4e50);
-            transform: translateX(-50%) scale(1.1);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translate(-50%, -60%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translate(-50%, -50%);
-                opacity: 1;
-            }
-        }
-
-        /* Fade Out for Modal Removal */
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Page loader -->
     <div id="loader" class="loader-container">
-        <div class="weather-loader">
-            <div class="sun"></div>
-            <div class="cloud">
-                <div class="cloud-part big"></div>
-                <div class="cloud-part medium"></div>
-            </div>
+      <div class="weather-loader">
+        <div class="sun"></div>
+        <div class="cloud">
+          <div class="cloud-part big"></div>
+          <div class="cloud-part medium"></div>
         </div>
+      </div>
     </div>
 
     <!-- Heading and Navbar -->
     <header>
-        <nav>
+      <nav>
         <div class="logo-container">
-            <a href="./index.html" target="_self" class="logo">
-                <img src="./assets/weatherlogo.jpeg" alt="Weather App Logo" class="logo-img">
-                <h1 class="logo-text">Weather App</h1>
-            </a>
+          <a href="./index.html" target="_self" class="logo">
+            <img
+              src="./assets/weatherlogo.jpeg"
+              alt="Weather App Logo"
+              class="logo-img"
+            />
+            <h1 class="logo-text">Weather App</h1>
+          </a>
         </div>
-        <input type="checkbox" id="menu">
+        <input type="checkbox" id="menu" />
         <label for="menu" class="ham">
           <span></span>
           <span></span>
           <span></span>
         </label>
-          <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact Us</a>
-            <button id="darkModeToggle" class="dark-mode-toggle">
-                <span id="icon">🌙</span>
-            </button>
-            </div>
-          </nav>
-      </header>
-    <main>
-        <div class="container">
-            <div class="content-box">
-                <div class="search-input-box">
-                    <div class="location-input-box">
-                        <input type="text" title="city" name="city" id="city-input" placeholder="Enter your location"
-                            autocomplete="off" onkeyup="showSuggestions()">
-                        <button onclick="getWeather()" class="submit-btn" id="submit-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <ul id="suggestions" class="suggestions-list" style="display: none;"></ul>
-                </div>
-
-                <!-- when the api is called Loader will appear -->
-                <div id="apiLoader" class="apiLoader-overlay">
-                    <div class="apiLoaderTwo"></div>
-                </div>
-
-                <!-- Error popup | When the api is failed to load the data -->
-                <div id="errorModal" class="modal">
-                    <div class="modal-content">
-                        <p id="modalMessage">An error occurred!</p>
-                        <button id="closeModal" class="close">Close</button>
-                    </div>
-                </div>
-
-                <div style="display: none;" id="weather-box">
-                    <div class="form">
-                        <div id="display">
-                            <div class="temp-display-box">
-                                <h2>Today</h2>
-                                <div class="d-inline-flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#190ef3"
-                                        width="50">
-                                        <path
-                                            d="M8 5C8 2.79086 9.79086 1 12 1C14.2091 1 16 2.79086 16 5V10.2547C17.8135 11.5196 19 13.6213 19 16C19 19.866 15.866 23 12 23C8.13401 23 5 19.866 5 16C5 13.6213 6.18652 11.5196 8 10.2547V5ZM9.1442 11.8951C7.80943 12.8261 7 14.3432 7 16C7 18.7614 9.23858 21 12 21C14.7614 21 17 18.7614 17 16C17 14.3432 16.1906 12.8261 14.8558 11.8951L14 11.2981V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V11.2981L9.1442 11.8951ZM11 12.126V5H13V12.126C14.7252 12.5701 16 14.1362 16 16C16 18.2091 14.2091 20 12 20C9.79086 20 8 18.2091 8 16C8 14.1362 9.27477 12.5701 11 12.126ZM12 18C13.1046 18 14 17.1046 14 16C14 14.8954 13.1046 14 12 14C10.8954 14 10 14.8954 10 16C10 17.1046 10.8954 18 12 18Z">
-                                        </path>
-                                    </svg>
-                                    <div id="temp">
-                                        <span id="temparature"></span>
-                                    </div>
-                                </div>
-                                <div class="weather-location-box">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#190ef3"
-                                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                                        </svg>
-                                    </span>
-                                    <span id="location"></span>
-                                    <button id="toggle">°F</button>
-                                </div>
-                            </div>
-                            <div>
-                                <img id="wicon" alt=" " width="200">
-                            </div>
-                        </div>
-                        <div class="d-inline-flex oth-weather-content">
-                            <div class="w-detail-box">
-                                <div class="f-bold">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#190ef3"
-                                            class="bi bi-water" viewBox="0 0 16 16">
-                                            <path
-                                                d="M.036 3.314a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 3.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 6.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 9.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.757-.703a.5.5 0 0 1-.278-.65" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div>
-                                    <div class="w-details-head">Pressure</div>
-                                    <div>
-                                        <span id="pressure"></span>
-                                        <span>/mb</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-detail-box">
-                                <div class="f-bold">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#190ef3"
-                                            class="bi bi-droplet-half" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
-                                            <path fill-rule="evenodd"
-                                                d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div>
-                                    <div class="w-details-head">Humidity</div>
-                                    <div>
-                                        <span id="humidity"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-detail-box">
-                                <div class="f-bold">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#190ef3"
-                                            class="bi bi-wind" viewBox="0 0 16 16">
-                                            <path
-                                                d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div>
-                                    <div class="w-details-head">Wind</div>
-                                    <div>
-                                        <span id="wind"></span>
-                                        <span>/mph</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="init-message">
-                    Type a location to get the weather data
-                </div>
-            </div>
+        <div class="nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact Us</a>
+          <button id="darkModeToggle" class="dark-mode-toggle">
+            <span id="icon">🌙</span>
+          </button>
         </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="content-box">
+          <div class="search-input-box">
+            <div class="location-input-box">
+                <input type="text" title="city" name="city" id="city-input" placeholder="Enter your location" autocomplete="off" onkeyup="showSuggestions()">
+                <button onclick="getWeather()" class="submit-btn" id="submit-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z"></path>
+                    </svg>
+                </button>
+                <!-- Clear Button -->
+                <button id="clear-btn" class="clear-btn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>
+                    </svg>
+                </button>
+            </div>
+            <ul
+              id="suggestions"
+              class="suggestions-list"
+              style="display: none"
+            ></ul>
+          </div>
+
+          <!-- when the api is called Loader will appear -->
+          <div id="apiLoader" class="apiLoader-overlay">
+            <div class="apiLoaderTwo"></div>
+          </div>
+
+          <!-- Error popup | When the api is failed to load the data -->
+          <div id="errorModal" class="modal">
+            <div class="modal-content">
+              <p id="modalMessage">An error occurred!</p>
+              <button id="closeModal" class="close">Close</button>
+            </div>
+          </div>
+
+          <div style="display: none" id="weather-box">
+            <div class="form">
+              <div id="display">
+                <div class="temp-display-box">
+                  <h2>Today</h2>
+                  <div class="d-inline-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="#190ef3"
+                      width="50"
+                    >
+                      <path
+                        d="M8 5C8 2.79086 9.79086 1 12 1C14.2091 1 16 2.79086 16 5V10.2547C17.8135 11.5196 19 13.6213 19 16C19 19.866 15.866 23 12 23C8.13401 23 5 19.866 5 16C5 13.6213 6.18652 11.5196 8 10.2547V5ZM9.1442 11.8951C7.80943 12.8261 7 14.3432 7 16C7 18.7614 9.23858 21 12 21C14.7614 21 17 18.7614 17 16C17 14.3432 16.1906 12.8261 14.8558 11.8951L14 11.2981V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V11.2981L9.1442 11.8951ZM11 12.126V5H13V12.126C14.7252 12.5701 16 14.1362 16 16C16 18.2091 14.2091 20 12 20C9.79086 20 8 18.2091 8 16C8 14.1362 9.27477 12.5701 11 12.126ZM12 18C13.1046 18 14 17.1046 14 16C14 14.8954 13.1046 14 12 14C10.8954 14 10 14.8954 10 16C10 17.1046 10.8954 18 12 18Z"
+                      ></path>
+                    </svg>
+                    <div id="temp">
+                      <span id="temparature"></span>
+                    </div>
+                  </div>
+                  <div class="weather-location-box">
+                    <span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        fill="#190ef3"
+                        class="bi bi-geo-alt-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+                        />
+                      </svg>
+                    </span>
+                    <span id="location"></span>
+                    <button id="toggle">°F</button>
+                  </div>
+                </div>
+                <div>
+                  <img id="wicon" alt=" " width="200" />
+                </div>
+              </div>
+              <div class="d-inline-flex oth-weather-content">
+                <div class="w-detail-box">
+                  <div class="f-bold">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="#190ef3"
+                        class="bi bi-water"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M.036 3.314a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 3.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 6.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 9.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.757-.703a.5.5 0 0 1-.278-.65"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div>
+                    <div class="w-details-head">Pressure</div>
+                    <div>
+                      <span id="pressure"></span>
+                      <span>/mb</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-detail-box">
+                  <div class="f-bold">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="#190ef3"
+                        class="bi bi-droplet-half"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div>
+                    <div class="w-details-head">Humidity</div>
+                    <div>
+                      <span id="humidity"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-detail-box">
+                  <div class="f-bold">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="#190ef3"
+                        class="bi bi-wind"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div>
+                    <div class="w-details-head">Wind</div>
+                    <div>
+                      <span id="wind"></span>
+                      <span>/mph</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="init-message">Type a location to get the weather data</div>
+        </div>
+      </div>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <ul>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="./feedback.html">Feedback</a></li>
-                <li><a href="./privacy.html">Privacy Policy</a></li>
-                <li><a href="#terms">Terms & Conditions</a></li>
-            </ul>
-            <p>&copy; 2025 Weather App. All rights reserved.</p>
-        </div>
+      <div class="footer-container">
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="./feedback.html">Feedback</a></li>
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+          <li><a href="#terms">Terms & Conditions</a></li>
+        </ul>
+        <p>&copy; 2025 Weather App. All rights reserved.</p>
+      </div>
     </footer>
     <script src="./loader.js"></script>
     <script src="./theme.js"></script>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

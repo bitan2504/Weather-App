@@ -424,7 +424,7 @@ nav {
 }
 
 #city-input {
-    padding: 0.8em 1em;
+    padding: 0.8em 3em 0.8em 1em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     border-radius: 10px 0px 0px 10px;
@@ -452,6 +452,32 @@ nav {
     box-shadow: 0 0 6px 1px #5672d0;
     background-color: #0f0f0fab;
     color: white;
+}
+
+/* clear button */
+.clear-btn {
+    position: absolute;
+    right: 50px; 
+    top: 55%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: none;
+}
+
+.clear-btn svg {
+    fill: #888;
+    transition: fill 0.3s ease;
+}
+
+.clear-btn:hover svg {
+    fill: #333; 
+}
+
+.location-input-box {
+    position: relative; 
 }
 
 
