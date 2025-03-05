@@ -42,7 +42,11 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #F0F4F8;
+    /* background-color: #F0F4F8; */
+    background-image: url(./assets/day-pic.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: #1A1A1A;
     transition: background-color 0.5s ease, color 0.5s ease;
     animation: fadeIn 0.8s ease-in-out;
@@ -58,7 +62,10 @@ body {
         opacity: 1;
     }
 }
-
+body.dark-mode {
+    background-image: url(./assets/night-pics.avif);
+    color: #fff;
+}
 /* Dark mode */
 .dark-mode {
     background-color: #475569;
@@ -497,10 +504,23 @@ nav {
     font-size: 0.85em;
     margin-bottom: 0.2em;
 }
-
+#init-message{
+    font-size: 1.5em;
+    color: #000000;
+    background: rgb(15,245,153);
+background: linear-gradient(120deg, rgba(15,245,153,1) 0%, rgba(82,210,255,1) 50%, rgba(6,138,223,1) 100%);
+    padding: 0.5rem 0;
+    margin-top: 1em;
+    border-radius: 10px;
+}
+.dark-mode #init-message{
+    color: white;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 27%, rgba(9,9,121,1) 65%, rgba(0,212,255,1) 100%);
+}
 /* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    background: linear-gradient(135deg, #1c1c22, #8f94fb);
     color: white;
     padding: 30px 20px;
     bottom: 0;
