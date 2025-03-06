@@ -15,6 +15,23 @@
     width: 10px;
     border-radius: 10px;
     background-color: #003F4E;
+
+}
+
+::-webkit-scrollbar:hover {
+    background-color: #003F4E;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: 2px 2px 5px #003F4E;
+    background: linear-gradient(45deg, #9465D4, #12E4DA);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #12E4DA, #9465D4);
+}
+
     }
     ::-webkit-scrollbar:hover {
     background-color: #003F4E;
@@ -27,6 +44,7 @@
     ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #12E4DA, #9465D4);
     }
+
 
 .display-font {
     font-family: "Playfair Display", serif;
@@ -584,6 +602,12 @@ footer {
 footer:hover {
     background: linear-gradient(135deg, #8f94fb, #4e54c8);
 }
+.dark-mode footer{
+    background: linear-gradient(135deg, #29292a, #3c3c3d);
+}
+.dark-mode footer:hover {
+    background: linear-gradient(135deg, #3c3c3d, #29292a);
+}
 
 .footer-container ul {
     list-style: none;
@@ -729,4 +753,5 @@ ul li a:hover {
     font-size: 30px;
     font-weight: bolder;
     color: #fff;
+
 }
