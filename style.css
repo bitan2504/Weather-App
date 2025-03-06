@@ -487,7 +487,7 @@ nav {
 }
 
 #city-input {
-    padding: 0.8em 1em;
+    padding: 0.8em 3em 0.8em 1em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     border-radius: 10px 0px 0px 10px;
@@ -517,7 +517,55 @@ nav {
     color: white;
 }
 
+/* clear button */
+.clear-btn {
+    position: absolute;
+    right: 50px; 
+    top: 55%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: none;
+}
 
+.clear-btn svg {
+    fill: #888;
+    transition: fill 0.3s ease;
+}
+
+.clear-btn:hover svg {
+    fill: #333; 
+}
+
+.location-input-box {
+    position: relative; 
+}
+
+/* Geolocation Button */
+.geolocation-btn {
+    position: absolute;
+    right: 80px; /* Adjust this value based on your layout */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.geolocation-btn svg {
+    fill: #888;
+    transition: fill 0.3s ease;
+}
+
+.geolocation-btn:hover svg {
+    fill: #333;
+}
 
 #submit-btn {
     border: 1px solid transparent;

@@ -15,6 +15,7 @@ const cityInput = document.getElementById('city-input');
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 const weatherSuggestion = document.getElementById('weather-suggestion')
+const clearBtn = document.getElementById('clear-btn')
 let centi = true;
 
 function getWeather() {
@@ -214,4 +215,21 @@ cityInput.addEventListener('keypress', function (event) {
         getWeather();
     }
 
+});
+
+
+// Show/hide clear button based on input value
+cityInput.addEventListener('input', function() {
+    if (cityInput.value.trim() !== '') {
+        clearBtn.style.display = 'block';
+    } else {
+        clearBtn.style.display = 'none';
+    }
+});
+
+// Clear the input and hide the clear button when clicked
+clearBtn.addEventListener('click', function() {
+    cityInput.value = '';
+    clearBtn.style.display = 'none';
+    cityInput.focus();
 });
