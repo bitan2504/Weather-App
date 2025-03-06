@@ -213,5 +213,34 @@ cityInput.addEventListener('keypress', function (event) {
         suggestionsList.remove();
         getWeather();
     }
+});
 
+// When bg image fails to load
+document.addEventListener("DOMContentLoaded", function () {
+    const targetClasses = [".form", ".w-details-head"];
+
+    targetClasses.forEach(className => {
+        const elements = document.querySelectorAll(className);
+
+        elements.forEach(element => {
+            let bgImage = getComputedStyle(element).backgroundImage;
+
+            if (!bgImage || bgImage === "none" || bgImage === 'url("about:blank")') {
+                let parent = element.parentElement;
+                while (parent) {
+                    bgImage = getComputedStyle(parent).backgroundImage;
+                    if (bgImage && bgImage !== "none" && bgImage !== 'url("about:blank")') {
+                        break;
+                    }
+                    parent = parent.parentElement;
+                }
+            }
+
+            if (!bgImage || bgImage === "none" || bgImage === 'url("about:blank")') {
+                element.style.color = "black";
+            } else {
+                element.style.color = "white";
+            }
+        });
+    });
 });
