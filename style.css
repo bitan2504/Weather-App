@@ -11,6 +11,23 @@
     --hover-text: #000;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    background-color: #003F4E;
+    }
+    ::-webkit-scrollbar:hover {
+    background-color: #003F4E;
+    }
+    ::-webkit-scrollbar-thumb {
+    box-shadow: 2px 2px 5px #003F4E;
+    background: linear-gradient(45deg, #9465D4, #12E4DA);
+    border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #12E4DA, #9465D4);
+    }
+
 .display-font {
     font-family: "Playfair Display", serif;
     font-size: large;
